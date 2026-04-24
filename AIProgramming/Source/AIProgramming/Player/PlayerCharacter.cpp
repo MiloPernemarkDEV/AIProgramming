@@ -10,12 +10,17 @@ APlayerCharacter::APlayerCharacter()
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SpringArm"));
 	SpringArm->SetupAttachment(GetCapsuleComponent()); 
 	check(SpringArm->GetAttachParent() == GetCapsuleComponent());	
-	UE_LOG(LogTemp, Log, TEXT("PlayerCharacter constructor created SpringArmComponent: SpringArm and attached it to the capsule component"));
+	UE_LOG(LogTemp, Log, TEXT("PlayerCharacter constructor created SpringArmComponent: SpringArm and attached it to the CapsuleComponent"));
 	
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Player Camera"));
 	Camera->SetupAttachment(SpringArm);
 	check(Camera->GetAttachParent() != nullptr);
 	UE_LOG(LogTemp, Log, TEXT("PlayerCharacter constructor created CameraComponent: Camera and attached it to the SpringArm"));
+	
+	PlayerMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Player Mesh"));
+	PlayerMesh->SetupAttachment(GetCapsuleComponent());
+	check(PlayerMesh->GetAttachParent() == GetCapsuleComponent());
+	UE_LOG(LogTemp, Log, TEXT("PlayerCharacter constructor created MeshComponent and attached it to the CapsuleComponent"));
 }
 
 void APlayerCharacter::BeginPlay()
