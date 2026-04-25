@@ -19,13 +19,21 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
 	class UCameraComponent* Camera;
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
 	class USpringArmComponent* SpringArm;
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Mesh)
+	/* Deprecated
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Mesh")
 	class UStaticMeshComponent* PlayerMesh;
+	*/
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Katana")
+	class UStaticMeshComponent* KatanaMesh;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Enhanced Input")
+	class UInputMappingContext* InputMappingContext;
 
 public:	
 	// Called every frame
